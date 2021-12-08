@@ -22,7 +22,7 @@ generateEl.addEventListener('click', () => {
   const hasNumber = numbersEl.checked;
   const hasSymbol = symbolsEl.checked;
 
-  resultEl.innerText = generatePassword(
+  resultEl.innerText = generatePassword (
     hasLower, 
     hasUpper, 
     hasSymbol, 
@@ -31,21 +31,53 @@ generateEl.addEventListener('click', () => {
   );
 });
 
+//Add to clipboard
+clipboardEl.addEventListener('click', () => {
+  const textarea = document.createElement('textarea');
+  const password = resultEl.innerText;
+
+  if(!password) {
+    return;
+  }
+
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  textarea.remove();
+  alert('Password copied to clipboard!');
+});
+
 //Generate password function
 function generatePassword(lower,upper,number,symbol,length) {
-  //1. Init pw var
-  //2. Filter out unchecked types
-  //3. Loop Over length call generator function for each type 
-  // 4. Add final pw to the pw var and return
 
   let generatedPassword = '';
 
   const typesCount = lower + upper + number + symbol;
 
-  console.log('typesCount: ', typesCount);
+  //console.log('typesCount: ', typesCount);
 
-  const typesArr = [{ lower }, { upper }, { number }, { symbol }];
-  console.log('typesArr: ', typesArr)
+  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter
+  (item => objecct.values(item)[0]
+  );
+
+  //console.log('typesArr: ', typesArr);
+
+  if(typesCount === 0) {
+    return'';
+
+  }
+  for(let i = 0; i < length; i += typesCount) {
+    typesArr.forEach(type => {
+      const funcName = Object.keys(type)[0];
+
+      generatedPassword += randomFunc[funcName]();
+    });
+  }
+
+  const finalPassword = generatedPassword.slice(0, length);
+
+  result finalPassword;
 }
 
 // Generator Functions Character chart http://www.net-comber.com/charset.html
@@ -67,15 +99,15 @@ function getRandomSymbol() {
 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+//var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+//function writePassword() {
+  //var password = generatePassword();
+  //var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  //passwordText.value = password;
 
 }
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword);
