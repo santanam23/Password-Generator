@@ -19,25 +19,33 @@ generateEl.addEventListener('click', () => {
   const length = lengthEl.value;
   const hasLower = lowercaseEl.checked;
   const hasUpper = uppercaseEl.checked;
-  const hasNumbers = numbersEl.checked;
-  const hassymbol = SymbolsEl.checked;
+  const hasNumber = numbersEl.checked;
+  const hasSymbol = symbolsEl.checked;
 
   resultEl.innerText = generatePassword(
     hasLower, 
     hasUpper, 
-    hassymbol, 
-    hasNumbers, 
+    hasSymbol, 
+    hasNumber, 
     length
-    );
+  );
 });
 
 //Generate password function
-function generatePassword(lower,upper,numbers,symbol, length) {
+function generatePassword(lower,upper,number,symbol,length) {
   //1. Init pw var
   //2. Filter out unchecked types
   //3. Loop Over length call generator function for each type 
   // 4. Add final pw to the pw var and return
 
+  let generatedPassword = '';
+
+  const typesCount = lower + upper + number + symbol;
+
+  console.log('typesCount: ', typesCount);
+
+  const typesArr = [{ lower }, { upper }, { number }, { symbol }];
+  console.log('typesArr: ', typesArr)
 }
 
 // Generator Functions Character chart http://www.net-comber.com/charset.html
