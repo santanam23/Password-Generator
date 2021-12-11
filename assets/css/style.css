@@ -57,9 +57,25 @@
    border-radius: 5px;  
  }
  
- 
+ .float-right {
+  float: right;
+}
+
  .card-footer::after {
    color: white;
    background-color: black;
  }
  
+ .btn {
+  border: none;
+  background-color: rgb(29, 128, 106);
+  border-radius: 25px;
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 55px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+}

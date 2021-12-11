@@ -10,9 +10,4 @@ var password=document.getElementById("password");
   }
         document.getElementById("password").value = password;
  }
-
-function copyPassword() {
-  var copyText = document.getElementById("password");
-  copyText.select();
-  document.execCommand("copy");  
-}
+alert('Welcome To My Secure Password Generator!')
