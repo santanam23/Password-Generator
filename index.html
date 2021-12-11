@@ -4,74 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script
-    src="https://kit.fontawesome.com/1f8b3efe0f.js" 
-    crossorigin="anonymous"></script>"
-    <link rel="stylesheet" href="style.css" />
-    <title>Password Generator</title>
+    <title>Miriam's Password Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div class="container" style=" text-align: center;
-    background-color: #7398bd">
-      <header>
-        <h1>Password Generator</h1>
-        <div class="result-container">
-        <span id="result"></span>
-        <buttom class="btn" id="clipboard">
-          <i calss="far fa--clipboard"></i>
-        </buttom>
-      </div>
-      </header>
-      <main class="settings">
-        <div class="setting">
-          <label for="length>">Password length</label>
-          <input type="number" id="length" min="4" max="20"
-          value="20" />
-        </div>
-        
-        <div class="settings">
-          <label for="uppercase"> Must include uppercase</label>
-          <input type="checkbox" id="uppercase" checked>
-        </div>
-        <div class="settings">
-          <label for="lowercase"> Must include lowercase</label>
-          <input type="checkbox" id="lowercase" checked>
-        </div>
-        <div class="settings">
-          <label for="numbers"> Must include numbers</label>
-          <input type="checkbox" id="numbers" checked>
-        </div>
-        <div class="settings">
-          <label for="symbol"> Must include symbols</label>
-          <input type="checkbox" id="symbol" checked>
-        </div>
-
+      <div class="card">
+        <div class="card-header">
           <h2>Generate Password</h2>
-      </main>
-        <div class="setting-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div>
-
         </div>
 
-
-
-
-
-
-
-
-        <div class="footer">
-          <button id="generate" class="btn">Generate Password</button>
+      <div class="footer">
+        <input type="text" name="Your Secure Password" Id="password" readonly>
+          <button id="generate" class="btn" onclick="generatePassword()">Generate Password</button>
         </div>
       </div>
-    </div>
-    <script src="script.js"></script>
+    <script src="assets/css/script.js"></script>
   </body>
 </html>

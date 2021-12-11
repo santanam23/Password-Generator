@@ -1,113 +1,18 @@
-//DOM elements
-const resultEl = document.getElementById('result');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const symbolsEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
-const clipboardEl = document.getElementById('clipboard');
+var password=document.getElementById("password");
 
-const randomFunc = {
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  symbol: getRandomSymbol
-};
-
-generateEl.addEventListener('click', () => {
-  const length = lengthEl.value;
-  const hasLower = lowercaseEl.checked;
-  const hasUpper = uppercaseEl.checked;
-  const hasNumber = numbersEl.checked;
-  const hasSymbol = symbolsEl.checked;
-
-  resultEl.innerText = generatePassword (
-    hasLower, 
-    hasUpper, 
-    hasSymbol, 
-    hasNumber, 
-    length
-  );
-});
-
-//Add to clipboard
-clipboardEl.addEventListener('click', () => {
-  const textarea = document.createElement('textarea');
-  const password = resultEl.innerText;
-
-  if(!password) {
-    return;
+ function generatePassword() {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 12;
+    var password = "";
+ for (var i = 0; i <= passwordLength; i++) {
+   var randomNumber = Math.floor(Math.random() * chars.length);
+   password += chars.substring(randomNumber, randomNumber +1);
   }
+        document.getElementById("password").value = password;
+ }
 
-  textarea.value = password;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand('copy');
-  textarea.remove();
-  alert('Password copied to clipboard!');
-});
-
-//Generate password function
-function generatePassword(lower,upper,number,symbol,length) {
-
-  let generatedPassword = '';
-
-  const typesCount = lower + upper + number + symbol;
-
-  //console.log('typesCount: ', typesCount);
-
-  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter
-  (item => objecct.values(item)[0]
-  );
-
-  //console.log('typesArr: ', typesArr);
-
-  if(typesCount === 0) {
-    return'';
-
-  }
-  for(let i = 0; i < length; i += typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
-
-      generatedPassword += randomFunc[funcName]();
-    });
-  }
-
-  const finalPassword = generatedPassword.slice(0, length);
-
-  result finalPassword;
+function copyPassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");  
 }
-
-// Generator Functions Character chart http://www.net-comber.com/charset.html
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.ramdom() * 26) + 97);
-}
-
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.ramdom() * 26) + 97)
-}
-
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.ramdom() * 10) + 48)
-}
-
-function getRandomSymbol() {
-  const symbols = '!@#$%^&*(){}[]=/,.';
-  return symbols [Math.floor(Math.random() * symbols.length)];
-
-
-// Get references to the #generate element
-//var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-//function writePassword() {
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-
-  //passwordText.value = password;
-
-}
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
