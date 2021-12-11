@@ -1,4 +1,4 @@
-var password=document.getElementById("password");
+var password = document.getElementById("password");
 
  function generatePassword() {
     var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
